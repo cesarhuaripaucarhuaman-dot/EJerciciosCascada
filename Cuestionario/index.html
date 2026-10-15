@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cuestionario: Sesión 09</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <a class="volver" href="../index.html">Volver al menú</a>
+    <h1>Cuestionario de la sesión</h1>
+    <p>Respuestas a las cinco preguntas de la guía, con una justificación breve.</p>
+
+    <h2>1. ¿Cuál es la diferencia principal entre una transición y una animación con @keyframes? Un caso de cada una.</h2>
+    <p>Una transición interpola entre solo dos estados (inicial y final) y necesita que algo cambie para dispararse (<code>:hover</code>, <code>:focus</code>, un cambio de clase). Una animación <code>@keyframes</code> define varios pasos intermedios y puede iniciar sola, repetirse, alternar y pausarse sin interacción.</p>
+    <ul>
+      <li>Transición: el cambio de color de un botón o enlace al pasar el cursor.</li>
+      <li><code>@keyframes</code>: un spinner de carga que gira indefinidamente o tarjetas que aparecen al cargar la página.</li>
+    </ul>
+
+    <h2>2. ¿Para qué sirve @keyframes y qué diferencia hay entre from/to y porcentajes?</h2>
+    <p><code>@keyframes</code> define el nombre de la animación y los fotogramas clave (los estilos en puntos concretos de la secuencia); luego se aplica con <code>animation-name</code>. <code>from/to</code> equivale a <code>0%</code>/<code>100%</code> y es práctico cuando hay solo dos pasos (ej.: <code>aparecer</code>). Con porcentajes se pueden definir tantos pasos intermedios como se necesiten (ej.: <code>rebote</code> con 0 %, 50 % y 100 %).</p>
+
+    <h2>3. ¿Qué hacen animation-timing-function y animation-iteration-count? Dos valores de cada una.</h2>
+    <ul>
+      <li><code>animation-timing-function</code> define la curva de aceleración, es decir, cómo varía la velocidad. Valores: <code>ease-in-out</code>, <code>linear</code> (también <code>ease</code>, <code>steps(5)</code>, <code>cubic-bezier()</code>).</li>
+      <li><code>animation-iteration-count</code> define cuántas veces se repite la animación. Valores: <code>3</code>, <code>infinite</code>.</li>
+    </ul>
+
+    <h2>4. ¿Qué efecto tiene animation-fill-mode: forwards y por qué es útil en animaciones de entrada?</h2>
+    <p>Hace que el elemento conserve los estilos del último fotograma al terminar la animación. En una animación de entrada (ej.: <code>opacity: 0</code> a <code>1</code>) evita que el elemento vuelva a su estado inicial (invisible) cuando acaba, de modo que permanece visible en su posición final.</p>
+
+    <h2>5. ¿Por qué animar transform y opacity en lugar de width, height o top? ¿Qué es prefers-reduced-motion y para qué se utiliza?</h2>
+    <p><code>transform</code> y <code>opacity</code> el navegador las procesa en la GPU sin recalcular el diseño (layout) de la página, lo que da animaciones fluidas; animar <code>width</code>, <code>height</code>, <code>top</code> o <code>margin</code> obliga a recalcular el diseño en cada fotograma y perjudica el rendimiento.</p>
+    <p><code>prefers-reduced-motion</code> es una media query que detecta si el usuario pidió reducir el movimiento en su sistema. Sirve para desactivar o reducir las animaciones (accesibilidad) para usuarios sensibles al movimiento, por ejemplo con <code>animation-duration: 0.01ms !important</code> o <code>animation: none</code>.</p>
+  </main>
+</body>
+</html>

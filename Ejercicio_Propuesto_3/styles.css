@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center; /* loader centrado en pantalla */
+  background: #0f172a;
+}
+
+.loader {
+  display: flex;
+  gap: 14px;
+}
+
+.punto {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #38bdf8;
+  /* Una sola animación reutilizada por los tres puntos */
+  animation: ola 1s ease-in-out infinite;
+}
+
+/* Tres retardos distintos = efecto de "ola" */
+.punto:nth-child(1) { animation-delay: 0s; }
+.punto:nth-child(2) { animation-delay: 0.15s; }
+.punto:nth-child(3) { animation-delay: 0.3s; }
+
+/* Aumenta y disminuye el tamaño */
+@keyframes ola {
+  0%, 100% { transform: scale(0.5); opacity: 0.5; }
+  50%      { transform: scale(1.4); opacity: 1; }
+}

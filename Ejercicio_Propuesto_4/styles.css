@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.banner {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  text-align: center;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  /* Degradado más grande que el contenedor para poder desplazarlo */
+  background-size: 400% 400%;
+  /* animation-name: moverFondo | animation-duration: 12s |
+     animation-timing-function: ease | animation-iteration-count: infinite */
+  animation: moverFondo 12s ease infinite;
+}
+
+.banner__titulo {
+  margin: 0;
+  font-size: clamp(2rem, 6vw, 4rem);
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+  /* animation-name: aparecer | animation-duration: 2s |
+     animation-timing-function: ease-out | animation-delay: 0.3s |
+     animation-fill-mode: both (oculto durante el retardo y visible al final) */
+  animation: aparecer 2s ease-out 0.3s both;
+}
+
+/* Desplaza la posición del fondo: 0% -> 50% -> 0% (ciclo suave) */
+@keyframes moverFondo {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Fade-in del título */
+@keyframes aparecer {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Accesibilidad: desactivar animaciones (animation: none) para usuarios
+   que prefieren menos movimiento; el título queda visible y el fondo estático */
+@media (prefers-reduced-motion: reduce) {
+  .banner { animation: none; background-position: 0% 50%; }
+  .banner__titulo { animation: none; opacity: 1; }
+}
